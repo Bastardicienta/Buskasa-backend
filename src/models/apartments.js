@@ -31,7 +31,26 @@ const apartmentSchema = new mongoose.Schema({
         trim: true,
         minlength: 8,
         maxlength: 100
-    }
+    },
+    userCreator:[
+        {
+            user:{
+                type: String,
+                required: true,
+                trim: true,
+                minlength: 5,
+                maxlength: 20,
+                unique: true,
+            },
+            name: {
+                type: String,
+                required: true,
+                trim: true,
+                minlength: 10,
+                maxlength: 50,
+            }
+        }
+    ]
 })
 
 const Apartment = mongoose.model("Apartment", apartmentSchema)

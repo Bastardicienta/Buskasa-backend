@@ -13,4 +13,25 @@ async function queryApartments() {
     return apartmentsList
 }
 
-module.exports = {queryApartments}
+async function createapartment(name, description, location, price, address, user) {
+    const apartment = await Apartment.create({
+        name,
+        description,
+        location,
+        price,
+        address,
+        userCreator : user
+    }).catch((error) => {
+        console.log(error)
+        throw new Error("Error al crear apartamento")
+    })
+    return {
+        name: apartment.name,
+        description: apartment.description,
+        location: apartment.location,
+        price: apartment.price,
+        address: apartment.address,
+        userCreator: apartment.userCreator
+    }
+}
+module.exports = {queryApartments, createapartment}

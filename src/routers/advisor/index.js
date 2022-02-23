@@ -14,8 +14,7 @@ router.post("/advisor/login", async (req, res)=>{
             status: true,
             message: "Asesor logueado con éxito",
             data: {
-                user: loggedAdvisor.user,
-                token: loggedAdvisor.token
+                advisor: loggedAdvisor
             }
         })
     } catch (error) {

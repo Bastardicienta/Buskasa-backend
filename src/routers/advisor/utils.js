@@ -21,7 +21,7 @@ async function loginAdvisor(user, password){
         console.log(error)
         throw new Error(`Error guardando nuevo token. ${error}`)
     }) 
-    return {user, token}
+    return {user, name: advisor.name, phone: advisor.phone, token}
 }
 
 function createToken(user) {

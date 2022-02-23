@@ -22,6 +22,15 @@ const advisorSchema = new mongoose.Schema({
         trim: true,
         minlength: 10,
         maxlength: 50,
+    },
+    phone: {
+        type: Number,
+        required: true,
+        minlength:10,
+        trim: true
+    },
+    token: {
+        type: String
     }
 })
 
