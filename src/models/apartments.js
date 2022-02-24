@@ -48,7 +48,13 @@ const apartmentSchema = new mongoose.Schema({
                 trim: true,
                 minlength: 10,
                 maxlength: 50,
-            }
+            },
+            phone: {
+                type: Number,
+                required: true,
+                length:10,
+                trim: true
+            },
         }
     ]
 })

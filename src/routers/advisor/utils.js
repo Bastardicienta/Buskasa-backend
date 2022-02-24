@@ -25,7 +25,8 @@ async function loginAdvisor(user, password){
 }
 
 function createToken(user) {
-    const token = jwt.sign({user}, "process.env.SIGN_PASSWORD")
+    console.log(process.env.SIGN_PASSWORD)
+    const token = jwt.sign({user}, process.env.SIGN_PASSWORD)
     return token
 }
 
