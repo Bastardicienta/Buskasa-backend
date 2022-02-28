@@ -3,7 +3,6 @@ const jwt = require("jsonwebtoken")
 function authenticate(req, res, next){
     try {
         const token = req.headers["accesstoken"]
-        console.log(token)
         const user = req.headers["user"]
         if(user == null){
             throw new Error("Error. No se envió usuario")
@@ -14,6 +13,7 @@ function authenticate(req, res, next){
         let auth
         try {
             auth = jwt.verify(token, process.env.SIGN_PASSWORD)
+            req.dataUser = auth
         } catch (error) {
             throw new Error("Firma inválida")
         }

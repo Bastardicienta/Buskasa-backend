@@ -15,7 +15,7 @@ async function loginAdvisor(user, password){
     if(password != advisor.password){
         throw new Error(`Error: Contraseña incorrecta`)
     }
-    const token = createToken(user)
+    const token = createToken(advisor.user, advisor.name, advisor.phone)
     advisor.token = token
     await advisor.save().catch ((error) => {
         console.log(error)
@@ -24,9 +24,9 @@ async function loginAdvisor(user, password){
     return {user, name: advisor.name, phone: advisor.phone, token}
 }
 
-function createToken(user) {
+function createToken(user, name, phone) {
     console.log(process.env.SIGN_PASSWORD)
-    const token = jwt.sign({user}, process.env.SIGN_PASSWORD)
+    const token = jwt.sign({user, name, phone}, process.env.SIGN_PASSWORD)
     return token
 }
 
